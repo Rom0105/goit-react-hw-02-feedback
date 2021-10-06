@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import Notification from '../Notification/Notification';
 import styles from '../Statistics/Statistics.module.css';
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
-    const totalFeedback = total();
-    const positiveValue = positivePercentage();
+function Statistics({ good, neutral, bad, countTotalFeedback, countPositiveFeedbackPercentage }) {
+    const totalFeedback = countTotalFeedback();
+    const positiveValue = countPositiveFeedbackPercentage();
 
     return (
         <div>
@@ -32,7 +32,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
                 </li>
                 <li className={styles.item}>
                     <p>
-                        Positive feedback:{' '}
+                        Positive feedback:
                         <span className={styles.value}>{positiveValue}%</span>
                     </p>
                 </li>
@@ -47,8 +47,8 @@ Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
-  total: PropTypes.func.isRequired,
-  positivePercentage: PropTypes.func.isRequired,
+  countTotalFeedback: PropTypes.func.isRequired,
+  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
 };
 
 export default Statistics;
